@@ -83,7 +83,6 @@ jobs:
           git checkout -B build  # Use -B to create or reset the build branch
 
           # Remove all files in the build branch
-          rm -rf *                # Remove all files and directories in the current directory
           git add .              # Stage the removal of all files
           git commit -m "Clear build branch"
 
