@@ -4,7 +4,11 @@ import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
-export default async function PostPage({ params }) {
+interface Params {
+  slug: string; 
+}
+
+export default async function PostPage({ params }: { params: Params }) {
   const { slug } = params;
   const postsDirectory = path.join(process.cwd(), 'posts');
   const filePath = path.join(postsDirectory, `${slug}.mdx`);
