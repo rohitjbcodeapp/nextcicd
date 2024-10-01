@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://rohitjbcodeapp.github.io/nextcicd/
+Host: https://rohitjbcodeapp.github.io/nextcicd
 
 # Sitemaps
 Sitemap: https://rohitjbcodeapp.github.io/nextcicd/sitemap.xml
