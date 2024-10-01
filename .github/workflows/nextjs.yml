@@ -81,7 +81,11 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git checkout -B build  # Use -B to create or reset the build branch
-          git rm -rf .           # Remove all existing files
+          rm -f public/sitemap.xml
+          rm -f tailwind.config.ts
+          rm -f tsconfig.json
+          rm -rf _next              # Remove the _next directory
+          rm -rf node_modules       # Remove the node_modules directory
           cp -r out/. ./         # Copy only the contents of the out directory
           git add .              # Stage the copied files
           git commit -m "Add static site files"
