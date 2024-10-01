@@ -3,6 +3,13 @@ import path from 'path';
 import matter from 'gray-matter';
 import Link from 'next/link';
 
+export const metadata = {
+  title:
+    "Blog Listing Page",
+  description:
+    "Blog Listing page",
+};
+
 export default async function PostsPage() {
   const postsDirectory = path.join(process.cwd(), 'posts');
   const filenames = fs.readdirSync(postsDirectory);
@@ -18,6 +25,7 @@ export default async function PostsPage() {
       frontMatter: data,
     };
   });
+  
 
   return (
     <div className='flex flex-col items-center justify-center min-h-screen text-center'>

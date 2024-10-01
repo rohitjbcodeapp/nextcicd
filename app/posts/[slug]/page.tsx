@@ -8,6 +8,12 @@ interface Params {
   slug: string; 
 }
 
+export const metadata = {
+  title:
+    "Blog Preview Page",
+  description:
+    "Blog View page",
+};
 
 export default async function PostPage({ params }: { params: Params }) {
   const { slug } = params;
