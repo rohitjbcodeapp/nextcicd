@@ -8,6 +8,7 @@ interface Params {
   slug: string; 
 }
 
+
 export default async function PostPage({ params }: { params: Params }) {
   const { slug } = params;
   const postsDirectory = path.join(process.cwd(), 'posts');
@@ -20,8 +21,9 @@ export default async function PostPage({ params }: { params: Params }) {
   return (
     <div className='flex items-center justify-center min-h-screen text-center'>
       <div>
+        <p className='text-xl py-2'>{data.date}</p>
         <h1 className='text-3xl'>{data.title}</h1>
-        <p className='text-xl'>{data.date}</p>
+        <p className='text-xl py-2'>{data.description}</p>
         <MDXRemote source={mdxSource} />
       </div>
     </div>
