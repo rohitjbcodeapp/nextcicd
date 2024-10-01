@@ -74,7 +74,7 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build Next.js static site
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build && next export
+        run: ${{ steps.detect-package-manager.outputs.runner }} npm run build
       - name: Push to build branch
         run: |
           git config --global user.name "github-actions"
