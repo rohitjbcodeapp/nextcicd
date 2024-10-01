@@ -73,8 +73,16 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+      - name: Build Next.js static site
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build && next export
+      - name: Push to build branch
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git checkout -b build
+          git add out
+          git commit -m "Add static site files"
+          git push -f origin build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
