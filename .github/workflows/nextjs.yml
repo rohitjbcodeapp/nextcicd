@@ -83,10 +83,7 @@ jobs:
           git add -f out
           git commit -m "Add static site files"
           git push -f origin build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out
+      
 
   # Deployment job
   deploy:
