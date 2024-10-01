@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  //  output: 'export',
+  output: 'export',
+  trailingSlash: true,
+  productionBrowserSourceMaps: true,
+  reactStrictMode: true,
   // pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   // extension: /\.mdx?$/,
 
