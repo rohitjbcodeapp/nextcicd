@@ -92,7 +92,6 @@ jobs:
           rm -f  package-lock.json
           rm -f  package.json
           rm -f  postcss.config.mjs
-          rm -f  public
           rm -f  out
           rm -f  app
           rm -f  .next
