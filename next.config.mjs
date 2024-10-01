@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   output: 'export',
+  //  output: 'export',
+  // pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  // extension: /\.mdx?$/,
+
 };
 
 export default nextConfig;
-
 
 //---------------------------
 // const isGithubActions = process.env.GITHUB_ACTIONS || false;
