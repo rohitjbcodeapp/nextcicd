@@ -80,7 +80,7 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git checkout -b build
-          git add out
+          git add -f out
           git commit -m "Add static site files"
           git push -f origin build
       - name: Upload artifact
