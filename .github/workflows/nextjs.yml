@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -80,10 +80,11 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git checkout -b build
-          git add -f out
+          git checkout -B build  # Use -B to create or reset the build branch
+          git rm -rf .           # Remove all existing files
+          cp -r out/. ./         # Copy only the contents of the out directory
+          git add .              # Stage the copied files
           git commit -m "Add static site files"
-          git push -f origin build
           git push -f https://x-access-token:${{ secrets.GH_PAT }}@github.com/rohitjbcodeapp/nextcicd.git build
 
       - name: Upload artifact
