@@ -4,6 +4,7 @@ const New = () => {
     return (
         <>
            <h1>New Pages</h1>
+           <p>Hello</p>
         </>
     )
 }
