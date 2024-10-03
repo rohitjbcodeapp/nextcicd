@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "changelog": "auto-changelog -p -r", 
+    "release": "release-it" 
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",
@@ -28,6 +30,34 @@
     "eslint-config-next": "14.2.13",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "release-it": "^16.0.0", 
+    "auto-changelog": "^2.0.0" 
+  },
+  "release-it": {
+    "git": {
+      "tagName": "v${version}",
+      "requireBranch": "master",
+      "commit": true,
+      "push": true,
+      "pushArgs": ["--follow-tags"]
+    },
+    "github": {
+      "release": true,
+      "assets": ["dist/*.zip"], 
+      "draft": false,
+      "token": "${GITHUB_TOKEN}"
+    },
+    "npm": {
+      "publish": false
+    },
+    "changelog": {
+      "preset": "angular",
+      "ignore": ["docs", "test"]
+    },
+    "hooks": {
+      "after:bump": "npm run build",
+      "after:release": "npm run changelog"
+    }
   }
 }
