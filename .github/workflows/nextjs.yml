@@ -73,22 +73,22 @@ jobs:
       - name: Build Next.js static site
         run: ${{ steps.detect-package-manager.outputs.runner }} npm run build
 
-      - name: Ensure build branch exists
+      - name: Ensure build branch exists and update
         run: |
           git fetch origin
           if git show-ref --verify --quiet refs/heads/build; then
-            echo "Build branch exists."
+            echo "Updating build branch."
+            git checkout build
+            git pull origin build  # Merge remote changes
           else
             echo "Creating build branch."
             git checkout -b build
-            git push -u origin build
           fi
 
       - name: Push to build branch
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git checkout build
           # Clean up previous artifacts if necessary
           rm -f public/sitemap.xml
           cp -r out/. ./
