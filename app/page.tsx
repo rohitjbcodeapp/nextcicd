@@ -37,7 +37,7 @@ export default async function Home() {
             ))}
           </ul>
         )}
-        <Link href="/posts" className="text-2xl text-center">Blogs</Link>
+        <Link href="/posts" className="text-2xl text-center">Blogs Listing</Link>
         {/* <Image
           className="dark:invert"
           src="https://nextjs.org/icons/next.svg"
