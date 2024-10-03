@@ -99,10 +99,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Create Release
-        run: npx release-it --ci
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}  # Make sure to set this secret in your repo
+      # - name: Create Release
+      #   run: npx release-it --ci
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.TOKEN }}  # Make sure to set this secret in your repo
 
   deploy:
     environment:
