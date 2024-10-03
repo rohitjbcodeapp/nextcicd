@@ -101,13 +101,10 @@ jobs:
       - name: Build Next.js static site
         run: npm run build
 
-      - name: Export Next.js static site
-        run: npm run export
-
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out  # Ensure this points to the correct build output directory
+          path: out  # Ensure this points to the correct output directory
           artifact_name: github-pages
 
   deploy:
