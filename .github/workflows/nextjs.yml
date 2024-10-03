@@ -24,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Get current version
         id: get_version
@@ -46,7 +46,7 @@ jobs:
           fi
           echo "New version: $NEW_VERSION"
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-          
+
           # Show changes in package.json
           echo "Changes in package.json:"
           git diff package.json
@@ -55,7 +55,7 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          
+
           if [ -n "$(git status --porcelain)" ]; then
             git add package.json package-lock.json
             git commit -m "Bump version to ${{ env.NEW_VERSION }}"
@@ -104,7 +104,7 @@ jobs:
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: out  # Ensure this points to the correct output directory
+          path: out # Ensure this points to the correct output directory
           artifact_name: github-pages
 
   deploy:
@@ -115,5 +115,6 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub token for deployment
-          artifact_name: github-pages  # This should match the name you used in the upload step
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifact_name: github-pages # Ensure this matches the name used in the upload step
+
