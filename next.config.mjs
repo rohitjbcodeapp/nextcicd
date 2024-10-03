@@ -4,6 +4,7 @@ const nextConfig = {
   trailingSlash: true,
   productionBrowserSourceMaps: true,
   reactStrictMode: true,
+  basePath: 'https://rohitjbcodeapp.github.io/nextcicd/',
   // pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   // extension: /\.mdx?$/,
 
