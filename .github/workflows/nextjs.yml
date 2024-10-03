@@ -91,7 +91,6 @@ jobs:
           rm -f  next.config.mjs
           rm -f  package-lock.json
           rm -f  package.json
-          rm -f  postcss.config.mjs
           rm -rf _next              # Remove the _next directory
           rm -rf node_modules       # Remove the node_modules directory
           cp -r out/. ./         # Copy only the contents of the out directory
