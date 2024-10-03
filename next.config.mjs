@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // output: 'export',
-  trailingSlash: true,
+  images: {unoptimized: true},output: "export",trailingSlash: true,
   productionBrowserSourceMaps: true,
   reactStrictMode: true,
-  basePath: '/nextcicd',
+  basePath: "/nextcicd",
   // pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   // extension: /\.mdx?$/,
 
