@@ -1,6 +1,6 @@
 {
   "name": "nextcicd",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -36,7 +36,7 @@
   "release-it": {
     "git": {
       "tagName": "v${version}",
-      "requireBranch": "main",
+      "requireBranch": "master",
       "commit": true,
       "push": true,
       "pushArgs": ["--follow-tags"]
