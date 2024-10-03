@@ -1,12 +1,42 @@
 // import Image from "next/image";
 
 import Link from "next/link";
+import fs from 'fs';
+import path from 'path';
 
-export default function Home() {
+export default async function Home() {
+  const ignoredDirectories = ['fonts', 'api', 'posts'];
+  const directoryPath = path.join(process.cwd(), 'app'); // Default to app directory
+  let directories: string[] = [];
+  let error = '';
+
+  try {
+    const files = await fs.promises.readdir(directoryPath, { withFileTypes: true });
+    directories = files
+      .filter(file => file.isDirectory() && !ignoredDirectories.includes(file.name))
+      .map(dir => dir.name);
+  } catch (err) {
+    error = 'Unable to scan directory: ' + err;
+  }
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <h1 className="text-8xl  font-two fw-9 fs-50 text-primary mb-4 trns-text bg-primary text-uppercase lh-65">Hello, World!!</h1>
+        <a href="/api/sitemap">Sitemap</a>
+        {error ? (
+          <p>Error: {error}</p>
+        ) : (
+          <ul>
+            {directories.map((dir, index) => (
+              <>
+                <a href={dir}>
+                  <li className="text-xl py-1" key={index}>{dir}</li>
+                </a>
+              </>
+            ))}
+          </ul>
+        )}
         <Link href="/posts" className="text-2xl text-center">Blogs</Link>
         {/* <Image
           className="dark:invert"
