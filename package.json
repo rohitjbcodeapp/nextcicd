@@ -8,7 +8,6 @@
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap",
-    "changelog": "auto-changelog -p -r", 
     "release": "release-it" 
   },
   "dependencies": {
@@ -37,14 +36,14 @@
   "release-it": {
     "git": {
       "tagName": "v${version}",
-      "requireBranch": "master",
+      "requireBranch": "main",
       "commit": true,
       "push": true,
       "pushArgs": ["--follow-tags"]
     },
     "github": {
       "release": true,
-      "assets": ["dist/*.zip"], 
+      "assets": ["dist/*.zip"],
       "draft": false,
       "token": "${GITHUB_TOKEN}"
     },
@@ -56,8 +55,8 @@
       "ignore": ["docs", "test"]
     },
     "hooks": {
-      "after:bump": "npm run build",
-      "after:release": "npm run changelog"
+      "after:bump": "npm run build", 
+      "after:release": "npm run changelog" 
     }
   }
 }

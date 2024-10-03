@@ -25,3 +25,14 @@ body {
     text-wrap: balance;
   }
 }
+
+
+.trns-text {
+  background: url(../public/giphy.webp) no-repeat bottom center;
+    background-color: rgba(0, 0, 0, 0);
+    background-size: auto;
+    background-clip: border-box;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-size: cover;
+}
