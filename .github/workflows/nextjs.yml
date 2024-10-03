@@ -81,23 +81,19 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git checkout -B build  # Use -B to create or reset the build branch
-          rm -f public/sitemap.xml
-          rm -f tailwind.config.ts
-          rm -f tsconfig.json
-          rm -f .eslintrc.json
-          rm -f .gitignore
-          rm -f  README.md
-          rm -f  next-sitemap.config.js
-          rm -f  next.config.mjs
-          rm -f  package-lock.json
-          rm -f  package.json
-          rm -f  postcss.config.mjs
-          rm -rf _next              # Remove the _next directory
+
+            # Clean up any existing files
           rm -rf node_modules       # Remove the node_modules directory
-          cp -r out/. ./         # Copy only the contents of the out directory
-          git add .              # Stage the copied files
-          git commit -m "Add static site files"
-          git push -f https://x-access-token:${{ secrets.GH_PAT }}@github.com/rohitjbcodeapp/nextcicd.git build
+          rm -rf *                  # Remove all files (except for .git)
+          rm -rf .gitignore         # Ensure .gitignore is not preventing files from being added
+
+          # Copy only the contents of the out directory to the root
+          cp -r out/. ./           # Copy files from out to the root
+
+          # Stage and commit changes
+          git add .
+          git commit -m "Deploy static site files"
+          git push -f origin build  # Force push to the build branch
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
