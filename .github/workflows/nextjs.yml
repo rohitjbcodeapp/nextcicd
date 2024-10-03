@@ -29,7 +29,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Get current version
         id: get_version
@@ -52,13 +52,22 @@ jobs:
           echo "New version: $NEW_VERSION"
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
+          # Show changes in package.json
+          echo "Changes in package.json:"
+          git diff package.json
+
       - name: Commit version change
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add package.json package-lock.json
-          git commit -m "Bump version to ${{ env.NEW_VERSION }}"
-          git push
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add package.json package-lock.json
+            git commit -m "Bump version to ${{ env.NEW_VERSION }}"
+            git push
+          else
+            echo "No changes to commit"
+          fi
 
   # Build job
   build:
